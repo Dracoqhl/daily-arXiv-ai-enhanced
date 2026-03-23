@@ -12,19 +12,91 @@ const DATA_CONFIG = {
      * GitHub repository owner (username)
      * This will be replaced during GitHub Actions workflow execution
      */
-    repoOwner: 'dw-dengwei',
+    repoOwner: 'PLACEHOLDER_REPO_OWNER',
 
     /**
      * GitHub repository name
      * This will be replaced during GitHub Actions workflow execution
      */
-    repoName: 'daily-arXiv-ai-enhanced',
+    repoName: 'PLACEHOLDER_REPO_NAME',
 
     /**
      * Data branch name
      * Default: 'data'
      */
     dataBranch: 'data',
+
+    /**
+     * Detect repository owner/name from GitHub Pages URL.
+     * Example: https://username.github.io/repo-name/
+     *
+     * @returns {{owner: string, repo: string}|null}
+     */
+    detectFromLocation: function() {
+        if (typeof window === 'undefined' || !window.location) {
+            return null;
+        }
+
+        const host = window.location.hostname || '';
+        const pathSegments = (window.location.pathname || '')
+            .split('/')
+            .filter(Boolean);
+        const githubPagesMatch = host.match(/^([^.]+)\.github\.io$/i);
+
+        if (!githubPagesMatch || pathSegments.length === 0) {
+            return null;
+        }
+
+        return {
+            owner: githubPagesMatch[1],
+            repo: pathSegments[0]
+        };
+    },
+
+    /**
+     * Check whether a value is still an unreplaced placeholder.
+     *
+     * @param {string} value
+     * @returns {boolean}
+     */
+    isPlaceholderValue: function(value) {
+        return !value || value.includes('PLACEHOLDER_');
+    },
+
+    /**
+     * Initialize repository owner/name.
+     * Priority:
+     * 1) CI-injected values
+     * 2) Auto-detected from current GitHub Pages URL
+     * 3) Fallback to upstream defaults
+     */
+    init: function() {
+        const needsOwner = this.isPlaceholderValue(this.repoOwner);
+        const needsRepo = this.isPlaceholderValue(this.repoName);
+
+        if (needsOwner || needsRepo) {
+            const detected = this.detectFromLocation();
+            if (detected) {
+                if (needsOwner) this.repoOwner = detected.owner;
+                if (needsRepo) this.repoName = detected.repo;
+            }
+        }
+
+        if (this.isPlaceholderValue(this.repoOwner)) {
+            this.repoOwner = 'dw-dengwei';
+        }
+        if (this.isPlaceholderValue(this.repoName)) {
+            this.repoName = 'daily-arXiv-ai-enhanced';
+        }
+    },
+
+    /**
+     * GitHub REST API URL for current repo
+     * @returns {string}
+     */
+    getRepoApiUrl: function() {
+        return `https://api.github.com/repos/${this.repoOwner}/${this.repoName}`;
+    },
 
     /**
      * Get the base URL for raw GitHub content from data branch
@@ -44,3 +116,4 @@ const DATA_CONFIG = {
     }
 };
 
+DATA_CONFIG.init();
