@@ -2,11 +2,13 @@ import argparse
 import json
 import os
 import sys
+import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Tuple
 
 import dotenv
-from pydantic import BaseModel, Field
+import langchain_core.exceptions
+from pydantic import BaseModel, Field, field_validator
 from langchain_openai import ChatOpenAI
 from langchain.prompts import (
     ChatPromptTemplate,
@@ -41,14 +43,32 @@ Categories: {categories}
 Abstract: {summary}
 
 Return structured output only in valid json format.
+Keep reason concise (<= 40 words).
 """
 
 
 class TopicDecision(BaseModel):
-    keep: bool = Field(description="Whether to keep this paper")
-    confidence: int = Field(description="Confidence score from 0 to 100")
-    theme: str = Field(description="One of: decision_making, reasoning, post_training, none")
-    reason: str = Field(description="Short reason for the decision")
+    # Defaults make parser robust when provider omits optional fields.
+    keep: bool = Field(default=False, description="Whether to keep this paper")
+    confidence: int = Field(default=50, description="Confidence score from 0 to 100")
+    theme: str = Field(default="none", description="One of: decision_making, reasoning, post_training, none")
+    reason: str = Field(default="", description="Short reason for the decision")
+
+    @field_validator("confidence", mode="before")
+    @classmethod
+    def normalize_confidence(cls, value):
+        try:
+            score = int(value)
+        except Exception:
+            score = 50
+        return max(0, min(100, score))
+
+    @field_validator("theme", mode="before")
+    @classmethod
+    def normalize_theme(cls, value):
+        allowed = {"decision_making", "reasoning", "post_training", "none"}
+        normalized = str(value or "none").strip().lower().replace(" ", "_")
+        return normalized if normalized in allowed else "none"
 
 
 def parse_args():
@@ -56,7 +76,7 @@ def parse_args():
     parser.add_argument("--data", type=str, required=True, help="Input JSONL path")
     parser.add_argument("--output", type=str, default="", help="Output JSONL path")
     parser.add_argument("--report", type=str, default="", help="Report JSON path")
-    parser.add_argument("--max_workers", type=int, default=2, help="Parallel workers")
+    parser.add_argument("--max_workers", type=int, default=6, help="Parallel workers")
     return parser.parse_args()
 
 
@@ -74,7 +94,12 @@ def get_structured_output_method() -> str:
 
 def build_chain(model_name: str):
     method = get_structured_output_method()
-    llm = ChatOpenAI(model=model_name, temperature=0).with_structured_output(
+    llm = ChatOpenAI(
+        model=model_name,
+        temperature=0,
+        max_retries=1,
+        timeout=45,
+    ).with_structured_output(
         TopicDecision,
         method=method,
     )
@@ -93,25 +118,43 @@ def classify_item(chain, item: Dict) -> Tuple[bool, Dict]:
     summary = str(item.get("summary", "")).strip()
 
     # Keep prompt size bounded to reduce latency/cost and avoid provider limits.
-    if len(summary) > 4000:
-        summary = summary[:4000]
+    if len(summary) > 2500:
+        summary = summary[:2500]
 
-    response: TopicDecision = chain.invoke(
-        {
-            "title": title,
-            "categories": categories_text,
-            "summary": summary,
-        }
-    )
-
-    decision = {
-        "keep": bool(response.keep),
-        "confidence": int(response.confidence),
-        "theme": str(response.theme),
-        "reason": str(response.reason),
+    payload = {
+        "title": title,
+        "categories": categories_text,
+        "summary": summary,
     }
 
-    return decision["keep"], decision
+    try:
+        response: TopicDecision = chain.invoke(payload)
+        decision = {
+            "keep": bool(response.keep),
+            "confidence": int(response.confidence),
+            "theme": str(response.theme),
+            "reason": str(response.reason),
+        }
+        return decision["keep"], decision
+    except langchain_core.exceptions.OutputParserException as e:
+        # Fallback: try parsing the raw JSON that some providers return
+        # when optional fields are omitted.
+        error_msg = str(e)
+        match = re.search(r"from completion\\s*(\\{.*\\})\\.\\s*Got:", error_msg, re.DOTALL)
+        if not match:
+            raise
+
+        parsed = json.loads(match.group(1))
+        decision = {
+            "keep": bool(parsed.get("keep", False)),
+            "confidence": int(parsed.get("confidence", 50) or 50),
+            "theme": str(parsed.get("theme", "none") or "none"),
+            "reason": str(parsed.get("reason", "") or ""),
+        }
+        decision["confidence"] = max(0, min(100, decision["confidence"]))
+        if decision["theme"] not in {"decision_making", "reasoning", "post_training", "none"}:
+            decision["theme"] = "none"
+        return decision["keep"], decision
 
 
 def main():

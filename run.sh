@@ -112,7 +112,8 @@ if [ "$PARTIAL_MODE" = "false" ]; then
     python topic_filter.py \
       --data ../data/${today}.jsonl \
       --output ../data/${today}_topic_filtered.jsonl \
-      --report ../data/${today}_topic_filter_report.json
+      --report ../data/${today}_topic_filter_report.json \
+      --max_workers 6
     topic_exit_code=$?
     
     case $topic_exit_code in
