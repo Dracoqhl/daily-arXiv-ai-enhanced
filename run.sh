@@ -63,22 +63,30 @@ echo "本地测试：爬取 $today 的arXiv论文... / Local test: Crawling $tod
 # 第一步：爬取数据 / Step 1: Crawl data
 echo "步骤1：开始爬取... / Step 1: Starting crawl..."
 
-# 检查今日文件是否已存在，如存在则删除 / Check if today's file exists, delete if found
-if [ -f "data/${today}.jsonl" ]; then
-    echo "🗑️ 发现今日文件已存在，正在删除重新生成... / Found existing today's file, deleting for fresh start..."
-    rm "data/${today}.jsonl"
-    echo "✅ 已删除现有文件：data/${today}.jsonl / Deleted existing file: data/${today}.jsonl"
+if [ -f "data/${today}_raw.jsonl" ]; then
+    echo "♻️ 命中当天原始缓存，跳过爬取 / Raw cache hit, skip crawling"
+    cp "data/${today}_raw.jsonl" "data/${today}.jsonl"
 else
-    echo "📝 今日文件不存在，准备新建... / Today's file doesn't exist, ready to create new one..."
+    # 检查今日文件是否已存在，如存在则删除 / Check if today's file exists, delete if found
+    if [ -f "data/${today}.jsonl" ]; then
+        echo "🗑️ 发现今日文件已存在，正在删除重新生成... / Found existing today's file, deleting for fresh start..."
+        rm "data/${today}.jsonl"
+        echo "✅ 已删除现有文件：data/${today}.jsonl / Deleted existing file: data/${today}.jsonl"
+    else
+        echo "📝 今日文件不存在，准备新建... / Today's file doesn't exist, ready to create new one..."
+    fi
+
+    cd daily_arxiv
+    scrapy crawl arxiv -o ../data/${today}.jsonl
+
+    if [ ! -f "../data/${today}.jsonl" ]; then
+        echo "爬取失败，未生成数据文件 / Crawling failed, no data file generated"
+        exit 1
+    fi
+    cd ..
 fi
 
-cd daily_arxiv
-scrapy crawl arxiv -o ../data/${today}.jsonl
-
-if [ ! -f "../data/${today}.jsonl" ]; then
-    echo "爬取失败，未生成数据文件 / Crawling failed, no data file generated"
-    exit 1
-fi
+cp "data/${today}.jsonl" "data/${today}_raw.jsonl"
 
 # 第二步：检查去重 / Step 2: Check duplicates  
 echo "步骤2：执行去重检查... / Step 2: Performing intelligent deduplication check..."
@@ -103,8 +111,6 @@ case $dedup_exit_code in
         ;;
 esac
 
-cd ..
-
 # 第三步：主题过滤 / Step 3: Topic filtering
 if [ "$PARTIAL_MODE" = "false" ]; then
     echo "步骤3：执行主题过滤（严格模式）... / Step 3: Topic filtering (strict mode)..."
@@ -113,7 +119,7 @@ if [ "$PARTIAL_MODE" = "false" ]; then
       --data ../data/${today}.jsonl \
       --output ../data/${today}_topic_filtered.jsonl \
       --report ../data/${today}_topic_filter_report.json \
-      --max_workers 6
+      --max_workers 3
     topic_exit_code=$?
     
     case $topic_exit_code in

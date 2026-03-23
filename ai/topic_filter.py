@@ -3,6 +3,7 @@ import json
 import os
 import sys
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Tuple
 
@@ -76,7 +77,7 @@ def parse_args():
     parser.add_argument("--data", type=str, required=True, help="Input JSONL path")
     parser.add_argument("--output", type=str, default="", help="Output JSONL path")
     parser.add_argument("--report", type=str, default="", help="Report JSON path")
-    parser.add_argument("--max_workers", type=int, default=6, help="Parallel workers")
+    parser.add_argument("--max_workers", type=int, default=3, help="Parallel workers")
     return parser.parse_args()
 
 
@@ -97,8 +98,9 @@ def build_chain(model_name: str):
     llm = ChatOpenAI(
         model=model_name,
         temperature=0,
-        max_retries=1,
-        timeout=45,
+        # We implement retries ourselves to better control backoff and payload shrink.
+        max_retries=0,
+        timeout=35,
     ).with_structured_output(
         TopicDecision,
         method=method,
@@ -118,33 +120,10 @@ def classify_item(chain, item: Dict) -> Tuple[bool, Dict]:
     summary = str(item.get("summary", "")).strip()
 
     # Keep prompt size bounded to reduce latency/cost and avoid provider limits.
-    if len(summary) > 2500:
-        summary = summary[:2500]
+    if len(summary) > 1800:
+        summary = summary[:1800]
 
-    payload = {
-        "title": title,
-        "categories": categories_text,
-        "summary": summary,
-    }
-
-    try:
-        response: TopicDecision = chain.invoke(payload)
-        decision = {
-            "keep": bool(response.keep),
-            "confidence": int(response.confidence),
-            "theme": str(response.theme),
-            "reason": str(response.reason),
-        }
-        return decision["keep"], decision
-    except langchain_core.exceptions.OutputParserException as e:
-        # Fallback: try parsing the raw JSON that some providers return
-        # when optional fields are omitted.
-        error_msg = str(e)
-        match = re.search(r"from completion\\s*(\\{.*\\})\\.\\s*Got:", error_msg, re.DOTALL)
-        if not match:
-            raise
-
-        parsed = json.loads(match.group(1))
+    def normalize_decision(parsed: Dict) -> Dict:
         decision = {
             "keep": bool(parsed.get("keep", False)),
             "confidence": int(parsed.get("confidence", 50) or 50),
@@ -154,7 +133,64 @@ def classify_item(chain, item: Dict) -> Tuple[bool, Dict]:
         decision["confidence"] = max(0, min(100, decision["confidence"]))
         if decision["theme"] not in {"decision_making", "reasoning", "post_training", "none"}:
             decision["theme"] = "none"
-        return decision["keep"], decision
+        return decision
+
+    def invoke_once(summary_text: str) -> Dict:
+        payload = {
+            "title": title,
+            "categories": categories_text,
+            "summary": summary_text,
+        }
+        try:
+            response: TopicDecision = chain.invoke(payload)
+            return {
+                "keep": bool(response.keep),
+                "confidence": int(response.confidence),
+                "theme": str(response.theme),
+                "reason": str(response.reason),
+            }
+        except langchain_core.exceptions.OutputParserException as e:
+            # Fallback: try parsing the raw JSON that some providers return
+            # when optional fields are omitted.
+            error_msg = str(e)
+            match = re.search(r"from completion\\s*(\\{.*\\})\\.\\s*Got:", error_msg, re.DOTALL)
+            if not match:
+                raise
+            parsed = json.loads(match.group(1))
+            return normalize_decision(parsed)
+
+    last_error = None
+    for attempt in range(3):
+        # Progressive payload shrinking on retries to reduce timeout risk.
+        if attempt == 0:
+            summary_text = summary
+        elif attempt == 1:
+            summary_text = summary[:1200]
+        else:
+            summary_text = summary[:700]
+
+        try:
+            decision = invoke_once(summary_text)
+            return decision["keep"], normalize_decision(decision)
+        except Exception as e:
+            last_error = e
+            error_text = str(e).lower()
+            retryable = (
+                "timed out" in error_text
+                or "timeout" in error_text
+                or "readtimeout" in error_text
+                or "429" in error_text
+                or "rate limit" in error_text
+                or "temporarily unavailable" in error_text
+            )
+            if retryable and attempt < 2:
+                time.sleep(2 * (attempt + 1))
+                continue
+            raise
+
+    if last_error:
+        raise last_error
+    raise RuntimeError("unknown topic filter invocation error")
 
 
 def main():

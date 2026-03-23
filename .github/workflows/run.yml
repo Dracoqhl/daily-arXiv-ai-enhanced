@@ -27,36 +27,99 @@ jobs:
         source .venv/bin/activate
         today=$(date -u "+%Y-%m-%d")
         echo "开始爬取 $today 的arXiv论文... / Starting to crawl $today arXiv papers..."
-        
-        # 检查今日文件是否已存在，如存在则删除 / Check if today's file exists, delete if found
-        if [ -f "data/${today}.jsonl" ]; then
-            echo "🗑️ 发现今日文件已存在，正在删除重新生成... / Found existing today's file, deleting for fresh start..."
-            rm "data/${today}.jsonl"
-            echo "✅ 已删除现有文件：data/${today}.jsonl / Deleted existing file: data/${today}.jsonl"
-        else
-            echo "📝 今日文件不存在，准备新建... / Today's file doesn't exist, ready to create new one..."
+        cache_hit=false
+
+        # 优先复用 data 分支中的当天原始抓取文件，避免重复爬取
+        # Reuse today's raw crawl cache from data branch when available.
+        if git ls-remote --heads origin data | grep -q data; then
+          echo "🔍 检查 data 分支原始缓存... / Checking raw cache in data branch..."
+          git fetch --depth=1 origin data || true
+          if git show FETCH_HEAD:data/${today}_raw.jsonl > data/${today}.jsonl 2>/dev/null; then
+            echo "♻️ 命中当天原始缓存，跳过爬取 / Raw cache hit, skip crawling"
+            cache_hit=true
+          fi
         fi
+
+        if [ "$cache_hit" != "true" ]; then
+          # 检查今日文件是否已存在，如存在则删除
+          if [ -f "data/${today}.jsonl" ]; then
+              echo "🗑️ 发现今日文件已存在，正在删除重新生成... / Found existing today's file, deleting for fresh start..."
+              rm "data/${today}.jsonl"
+              echo "✅ 已删除现有文件：data/${today}.jsonl / Deleted existing file: data/${today}.jsonl"
+          else
+              echo "📝 今日文件不存在，准备新建... / Today's file doesn't exist, ready to create new one..."
+          fi
         
-        cd daily_arxiv
-        export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
-        export OPENAI_BASE_URL=${{ secrets.OPENAI_BASE_URL }}
-        export TOKEN_GITHUB=${{ secrets.TOKEN_GITHUB }}
-        export LANGUAGE="${{ vars.LANGUAGE }}"
-        export CATEGORIES="${{ vars.CATEGORIES }}"
-        export MODEL_NAME="${{ vars.MODEL_NAME }}"
-        
-        # 使用Scrapy爬取
-        # Use Scrapy to crawl
-        scrapy crawl arxiv -o ../data/${today}.jsonl
-        
-        # 检查爬取是否成功 / Check if crawling was successful
-        if [ ! -f "../data/${today}.jsonl" ]; then
-            echo "爬取失败，未生成数据文件 / Crawling failed, no data file generated"
-            exit 1
+          cd daily_arxiv
+          export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          export OPENAI_BASE_URL=${{ secrets.OPENAI_BASE_URL }}
+          export TOKEN_GITHUB=${{ secrets.TOKEN_GITHUB }}
+          export LANGUAGE="${{ vars.LANGUAGE }}"
+          export CATEGORIES="${{ vars.CATEGORIES }}"
+          export MODEL_NAME="${{ vars.MODEL_NAME }}"
+          
+          # 使用Scrapy爬取
+          # Use Scrapy to crawl
+          scrapy crawl arxiv -o ../data/${today}.jsonl
+          cd ..
+
+          # 检查爬取是否成功 / Check if crawling was successful
+          if [ ! -f "data/${today}.jsonl" ]; then
+              echo "爬取失败，未生成数据文件 / Crawling failed, no data file generated"
+              exit 1
+          fi
         fi
-        
+
+        # 保存当天原始抓取副本，供失败重跑复用
+        cp data/${today}.jsonl data/${today}_raw.jsonl
+
         echo "crawl_date=$today" >> $GITHUB_OUTPUT
+        echo "raw_cache_hit=$cache_hit" >> $GITHUB_OUTPUT
         echo "爬取完成 / Crawling completed"
+
+    - name: Early push raw crawl cache to data branch
+      if: steps.crawl_step.outcome == 'success'
+      run: |
+        today=${{ steps.crawl_step.outputs.crawl_date }}
+        echo "提前推送当日原始缓存到 data 分支... / Early pushing raw cache to data branch..."
+
+        git config --global user.email "${{ vars.EMAIL }}"
+        git config --global user.name "${{ vars.NAME }}"
+
+        # Build an isolated worktree for data branch operations
+        rm -rf /tmp/data_raw_push
+        if git ls-remote --heads origin data | grep -q data; then
+          git fetch origin data
+          git worktree add --detach /tmp/data_raw_push refs/remotes/origin/data
+        else
+          git worktree add --detach /tmp/data_raw_push
+          cd /tmp/data_raw_push
+          git checkout --orphan data
+          git rm -rf --cached . 2>/dev/null || true
+          mkdir -p data assets
+          echo "# Data Branch" > README.md
+          git add README.md
+          git commit -m "chore: initialize data branch"
+          git push origin HEAD:data
+          cd -
+        fi
+
+        cd /tmp/data_raw_push
+        mkdir -p data
+        cp "$GITHUB_WORKSPACE/data/${today}_raw.jsonl" "data/${today}_raw.jsonl"
+        git add "data/${today}_raw.jsonl"
+
+        if git diff --staged --quiet; then
+          echo "原始缓存无变更，无需推送 / No raw cache changes to push"
+        else
+          git commit -m "cache: raw crawl ${today}"
+          git push origin HEAD:data
+          echo "✅ 原始缓存已提前推送到 data 分支 / Raw cache pushed early to data branch"
+        fi
+        cd -
+
+        # Cleanup detached worktree
+        git worktree remove /tmp/data_raw_push --force || true
         
     - name: Check for duplicates
       id: dedup_check
@@ -115,7 +178,7 @@ jobs:
           --data ../data/${today}.jsonl \
           --output ../data/${today}_topic_filtered.jsonl \
           --report ../data/${today}_topic_filter_report.json \
-          --max_workers 6
+          --max_workers 3
         topic_exit_code=$?
         set -e
 
@@ -339,7 +402,7 @@ jobs:
         done
 
     - name: Prepare data files for data branch
-      if: steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch'
+      if: always() && steps.crawl_step.outcome == 'success' && (steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch')
       run: |
         echo "准备数据文件... / Preparing data files..."
         today=${{ steps.crawl_step.outputs.crawl_date }}
@@ -353,6 +416,7 @@ jobs:
         # Copy only generated enhanced data/markdown for this run.
         cp data/${today}_AI_enhanced_*.jsonl /tmp/data_files/data/ 2>/dev/null || true
         cp data/${today}.md /tmp/data_files/data/ 2>/dev/null || true
+        cp data/${today}_raw.jsonl /tmp/data_files/data/ 2>/dev/null || true
 
         # 复制历史失败数据清理脚本到临时目录（切分支后仍可执行）
         cp ai/cleanup_failed_ai.py /tmp/data_files/scripts/cleanup_failed_ai.py
@@ -360,7 +424,7 @@ jobs:
         echo "数据文件已保存到临时目录 / Data files saved to temporary directory"
 
     - name: Setup and commit to data branch
-      if: steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch'
+      if: always() && steps.crawl_step.outcome == 'success' && (steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch')
       run: |
         git config --global user.email "${{ vars.EMAIL }}"
         git config --global user.name "${{ vars.NAME }}"
@@ -420,7 +484,7 @@ jobs:
         fi
 
     - name: Push data changes to data branch
-      if: steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch'
+      if: always() && steps.crawl_step.outcome == 'success' && (steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch')
       run: |
         # 设置Git配置以处理自动合并 / Set Git config for automatic merging
         git config pull.rebase true
