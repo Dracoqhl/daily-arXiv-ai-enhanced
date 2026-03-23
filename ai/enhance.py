@@ -27,6 +27,27 @@ if os.path.exists('.env'):
 template = open("template.txt", "r").read()
 system = open("system.txt", "r").read()
 
+
+def get_structured_output_method() -> str:
+    """
+    Choose a structured output method compatible with the current provider.
+
+    Priority:
+    1. ENV override: STRUCTURED_OUTPUT_METHOD
+    2. Auto-detect by OPENAI_BASE_URL
+    """
+    configured = os.environ.get("STRUCTURED_OUTPUT_METHOD", "").strip()
+    if configured:
+        return configured
+
+    base_url = os.environ.get("OPENAI_BASE_URL", "").lower()
+    # DashScope thinking mode does not support tool_choice required/object,
+    # so function calling may fail with 400 invalid_parameter_error.
+    if "dashscope.aliyuncs.com" in base_url:
+        return "json_mode"
+
+    return "function_calling"
+
 def parse_args():
     """解析命令行参数"""
     parser = argparse.ArgumentParser()
@@ -167,8 +188,15 @@ def process_single_item(chain, item: Dict, language: str) -> Dict:
 
 def process_all_items(data: List[Dict], model_name: str, language: str, max_workers: int) -> List[Dict]:
     """并行处理所有数据项"""
-    llm = ChatOpenAI(model=model_name).with_structured_output(Structure, method="function_calling")
-    print('Connect to:', model_name, file=sys.stderr)
+    structured_output_method = get_structured_output_method()
+    llm = ChatOpenAI(model=model_name).with_structured_output(
+        Structure,
+        method=structured_output_method
+    )
+    print(
+        f'Connect to: {model_name}, structured_output_method={structured_output_method}',
+        file=sys.stderr
+    )
     
     prompt_template = ChatPromptTemplate.from_messages([
         SystemMessagePromptTemplate.from_template(system),
@@ -245,6 +273,24 @@ def main():
         language,
         args.max_workers
     )
+
+    # Fail fast if all items fall back to default AI content.
+    # This avoids silently publishing unusable summaries.
+    success_count = 0
+    for item in processed_data:
+        if not item:
+            continue
+        ai_data = item.get("AI", {})
+        tldr = ai_data.get("tldr", "")
+        if tldr not in ("Summary generation failed", "Processing failed"):
+            success_count += 1
+
+    if data and success_count == 0:
+        print(
+            "❌ All AI generations failed. Please verify MODEL_NAME/OPENAI_BASE_URL/provider compatibility.",
+            file=sys.stderr
+        )
+        sys.exit(1)
     
     # 保存结果
     with open(target_file, "w") as f:
