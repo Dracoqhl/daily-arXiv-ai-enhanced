@@ -96,9 +96,56 @@ jobs:
                 exit 1
                 ;;
         esac
+
+    - name: Topic Filter
+      id: topic_filter
+      if: steps.dedup_check.outputs.has_new_content == 'true'
+      run: |
+        source .venv/bin/activate
+        today=${{ steps.crawl_step.outputs.crawl_date }}
+        echo "执行主题过滤（严格模式）... / Performing topic filtering (strict mode)..."
+
+        cd ai
+        export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+        export OPENAI_BASE_URL=${{ secrets.OPENAI_BASE_URL }}
+        export MODEL_NAME="${{ vars.MODEL_NAME }}"
+
+        set +e
+        python topic_filter.py \
+          --data ../data/${today}.jsonl \
+          --output ../data/${today}_topic_filtered.jsonl \
+          --report ../data/${today}_topic_filter_report.json
+        topic_exit_code=$?
+        set -e
+
+        echo "主题过滤退出码: $topic_exit_code / Topic filter exit code: $topic_exit_code"
+        echo "topic_exit_code=$topic_exit_code" >> $GITHUB_OUTPUT
+
+        case $topic_exit_code in
+            0)
+                # 用过滤后的文件覆盖输入，保持后续产物命名兼容
+                cp ../data/${today}_topic_filtered.jsonl ../data/${today}.jsonl
+                echo "has_topic_content=true" >> $GITHUB_OUTPUT
+                ;;
+            1)
+                echo "has_topic_content=false" >> $GITHUB_OUTPUT
+                echo "skip_reason=no_topic_match" >> $GITHUB_OUTPUT
+                ;;
+            2)
+                echo "has_topic_content=false" >> $GITHUB_OUTPUT
+                echo "skip_reason=topic_filter_error" >> $GITHUB_OUTPUT
+                exit 1
+                ;;
+            *)
+                echo "❌ 未知退出码，停止工作流 / Unknown topic filter exit code, stop workflow"
+                echo "has_topic_content=false" >> $GITHUB_OUTPUT
+                echo "skip_reason=unknown_error" >> $GITHUB_OUTPUT
+                exit 1
+                ;;
+        esac
         
     - name: AI Enhancement Processing
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' && steps.topic_filter.outputs.has_topic_content == 'true'
       run: |
         source .venv/bin/activate
         today=${{ steps.crawl_step.outputs.crawl_date }}
@@ -120,7 +167,7 @@ jobs:
         echo "AI增强处理完成 / AI enhancement processing completed"
         
     - name: Convert to Markdown
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' && steps.topic_filter.outputs.has_topic_content == 'true'
       run: |
         source .venv/bin/activate
         today=${{ steps.crawl_step.outputs.crawl_date }}
@@ -151,14 +198,14 @@ jobs:
         echo "Markdown转换完成 / Markdown conversion completed"
         
     - name: Update file list
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' && steps.topic_filter.outputs.has_topic_content == 'true'
       run: |
         echo "更新文件列表... / Updating file list..."
         ls data/*.jsonl | sed 's|data/||' > assets/file-list.txt
         echo "文件列表更新完成 / File list updated"
 
     - name: Generate password hash and inject into config
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' && steps.topic_filter.outputs.has_topic_content == 'true'
       run: |
         echo "🔐 Generating password hash for authentication..."
 
@@ -194,7 +241,18 @@ jobs:
     - name: Summary
       run: |
         if [ "${{ steps.dedup_check.outputs.has_new_content }}" = "true" ]; then
-          echo "✅ 工作流完成：去重发现新内容并成功处理 / Workflow completed: Smart deduplication found new content and processed successfully"
+          if [ "${{ steps.topic_filter.outputs.has_topic_content }}" = "true" ]; then
+            echo "✅ 工作流完成：主题过滤后有相关新内容并成功处理 / Workflow completed: Topic filtering found relevant new content and processed successfully"
+          else
+            case "${{ steps.topic_filter.outputs.skip_reason }}" in
+              "no_topic_match")
+                echo "ℹ️ 工作流完成：有新论文但无目标主题论文，已跳过AI处理 / Workflow completed: New papers found but none matched target topic, AI steps skipped"
+                ;;
+              *)
+                echo "ℹ️ 工作流完成：主题过滤后跳过后续处理 / Workflow completed: Skipped after topic filtering"
+                ;;
+            esac
+          fi
         else
           case "${{ steps.dedup_check.outputs.skip_reason }}" in
             "no_new_content")
@@ -213,7 +271,7 @@ jobs:
         fi
         
     - name: Inject repository info into data-config.js
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' && steps.topic_filter.outputs.has_topic_content == 'true'
       run: |
         echo "注入仓库信息到 data-config.js... / Injecting repository info into data-config.js..."
         
@@ -235,7 +293,7 @@ jobs:
         fi
 
     - name: Commit code changes to main branch
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' && steps.topic_filter.outputs.has_topic_content == 'true'
       run: |
         git config --global user.email "${{ vars.EMAIL }}"
         git config --global user.name "${{ vars.NAME }}"
@@ -257,7 +315,7 @@ jobs:
         fi
 
     - name: Push code changes to main branch
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' && steps.topic_filter.outputs.has_topic_content == 'true'
       run: |
         # 设置Git配置以处理自动合并 / Set Git config for automatic merging
         git config pull.rebase true
@@ -280,7 +338,7 @@ jobs:
         done
 
     - name: Prepare data files for data branch
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch'
       run: |
         echo "准备数据文件... / Preparing data files..."
         today=${{ steps.crawl_step.outputs.crawl_date }}
@@ -288,15 +346,20 @@ jobs:
         # 创建临时目录保存数据文件 / Create temporary directory to save data files
         mkdir -p /tmp/data_files/data
         mkdir -p /tmp/data_files/assets
+        mkdir -p /tmp/data_files/scripts
         
-        # 复制数据文件到临时目录 / Copy data files to temporary directory
-        cp -r data/* /tmp/data_files/data/ 2>/dev/null || true
-        cp assets/file-list.txt /tmp/data_files/assets/ 2>/dev/null || true
+        # 仅复制本次生成的增强数据和markdown，避免把原始爬取文件写入 data 分支
+        # Copy only generated enhanced data/markdown for this run.
+        cp data/${today}_AI_enhanced_*.jsonl /tmp/data_files/data/ 2>/dev/null || true
+        cp data/${today}.md /tmp/data_files/data/ 2>/dev/null || true
+
+        # 复制历史失败数据清理脚本到临时目录（切分支后仍可执行）
+        cp ai/cleanup_failed_ai.py /tmp/data_files/scripts/cleanup_failed_ai.py
         
         echo "数据文件已保存到临时目录 / Data files saved to temporary directory"
 
     - name: Setup and commit to data branch
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch'
       run: |
         git config --global user.email "${{ vars.EMAIL }}"
         git config --global user.name "${{ vars.NAME }}"
@@ -335,11 +398,17 @@ jobs:
         # 确保目录存在 / Ensure directories exist
         mkdir -p data assets
         cp -r /tmp/data_files/data/* data/ 2>/dev/null || true
-        cp /tmp/data_files/assets/file-list.txt assets/ 2>/dev/null || true
+
+        # 清理历史失败摘要数据，并重新生成 file-list
+        python /tmp/data_files/scripts/cleanup_failed_ai.py \
+          --data_dir data \
+          --file_list assets/file-list.txt \
+          --report assets/cleanup-report.json
         
         # 只添加数据文件 / Only add data files
         git add data/* 2>/dev/null || true
         git add assets/file-list.txt 2>/dev/null || true
+        git add assets/cleanup-report.json 2>/dev/null || true
         
         # 检查是否有数据变更需要提交 / Check if there are data changes to commit
         if git diff --staged --quiet; then
@@ -350,7 +419,7 @@ jobs:
         fi
 
     - name: Push data changes to data branch
-      if: steps.dedup_check.outputs.has_new_content == 'true'
+      if: steps.dedup_check.outputs.has_new_content == 'true' || github.event_name == 'workflow_dispatch'
       run: |
         # 设置Git配置以处理自动合并 / Set Git config for automatic merging
         git config pull.rebase true

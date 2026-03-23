@@ -105,9 +105,50 @@ esac
 
 cd ..
 
-# 第三步：AI处理 / Step 3: AI processing
+# 第三步：主题过滤 / Step 3: Topic filtering
 if [ "$PARTIAL_MODE" = "false" ]; then
-    echo "步骤3：AI增强处理... / Step 3: AI enhancement processing..."
+    echo "步骤3：执行主题过滤（严格模式）... / Step 3: Topic filtering (strict mode)..."
+    cd ai
+    python topic_filter.py \
+      --data ../data/${today}.jsonl \
+      --output ../data/${today}_topic_filtered.jsonl \
+      --report ../data/${today}_topic_filter_report.json
+    topic_exit_code=$?
+    
+    case $topic_exit_code in
+        0)
+            # 用过滤结果覆盖输入，保持后续文件命名兼容
+            cp ../data/${today}_topic_filtered.jsonl ../data/${today}.jsonl
+            echo "✅ 主题过滤完成，发现目标论文 / Topic filtering completed with relevant papers"
+            ;;
+        1)
+            echo "ℹ️  主题过滤后无目标论文，结束本次完整流程 / No topic-matched papers after filtering"
+            cd ..
+            rm -f data/${today}.jsonl data/${today}_topic_filtered.jsonl data/${today}_topic_filter_report.json
+            ls data/*.jsonl 2>/dev/null | sed 's|data/||' > assets/file-list.txt || true
+            echo "✅ 文件列表已更新 / File list updated"
+            echo ""
+            echo "=== 本地调试完成 / Local Debug Completed ==="
+            echo "ℹ️ 今日有新论文，但无目标主题论文，历史数据保持不变 / New papers found today but none match target topic"
+            exit 0
+            ;;
+        2)
+            echo "❌ 主题过滤失败 / Topic filtering failed"
+            exit 1
+            ;;
+        *)
+            echo "❌ 未知主题过滤退出码 / Unknown topic filter exit code"
+            exit 1
+            ;;
+    esac
+    cd ..
+else
+    echo "⏭️  跳过主题过滤（部分模式）/ Skipping topic filtering (partial mode)"
+fi
+
+# 第四步：AI处理 / Step 4: AI processing
+if [ "$PARTIAL_MODE" = "false" ]; then
+    echo "步骤4：AI增强处理... / Step 4: AI enhancement processing..."
     cd ai
     python enhance.py --data ../data/${today}.jsonl
     
@@ -121,8 +162,8 @@ else
     echo "⏭️  跳过AI处理（部分模式）/ Skipping AI processing (partial mode)"
 fi
 
-# 第四步：转换为Markdown / Step 4: Convert to Markdown
-echo "步骤4：转换为Markdown... / Step 4: Converting to Markdown..."
+# 第五步：转换为Markdown / Step 5: Convert to Markdown
+echo "步骤5：转换为Markdown... / Step 5: Converting to Markdown..."
 cd to_md
 
 if [ "$PARTIAL_MODE" = "false" ] && [ -f "../data/${today}_AI_enhanced_${LANGUAGE}.jsonl" ]; then
@@ -147,9 +188,9 @@ fi
 
 cd ..
 
-# 第五步：更新文件列表 / Step 5: Update file list
-echo "步骤5：更新文件列表... / Step 5: Updating file list..."
-ls data/*.jsonl | sed 's|data/||' > assets/file-list.txt
+# 第六步：更新文件列表 / Step 6: Update file list
+echo "步骤6：更新文件列表... / Step 6: Updating file list..."
+ls data/*.jsonl 2>/dev/null | sed 's|data/||' > assets/file-list.txt || true
 echo "✅ 文件列表更新完成 / File list updated"
 
 # 完成总结 / Completion summary
@@ -159,6 +200,7 @@ if [ "$PARTIAL_MODE" = "false" ]; then
     echo "🎉 完整流程已完成 / Complete workflow finished:"
     echo "   ✅ 数据爬取 / Data crawling"
     echo "   ✅ 去重检查 / Smart duplicate check"
+    echo "   ✅ 主题过滤 / Topic filtering"
     echo "   ✅ AI增强处理 / AI enhancement"
     echo "   ✅ Markdown转换 / Markdown conversion"
     echo "   ✅ 文件列表更新 / File list update"
@@ -166,7 +208,7 @@ else
     echo "🔄 部分流程已完成 / Partial workflow finished:"
     echo "   ✅ 数据爬取 / Data crawling"
     echo "   ✅ 去重检查 / Smart duplicate check"
-    echo "   ⏭️  跳过AI增强和Markdown转换 / Skipped AI enhancement and Markdown conversion"
+    echo "   ⏭️  跳过主题过滤、AI增强和Markdown转换 / Skipped topic filtering, AI enhancement and Markdown conversion"
     echo "   ✅ 文件列表更新 / File list update"
     echo ""
     echo "💡 提示：设置OPENAI_API_KEY可启用完整功能 / Tip: Set OPENAI_API_KEY to enable full functionality"
