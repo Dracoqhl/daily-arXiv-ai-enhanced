@@ -198,9 +198,17 @@ def process_all_items(data: List[Dict], model_name: str, language: str, max_work
         file=sys.stderr
     )
     
+    effective_template = template
+    if structured_output_method == "json_mode":
+        # DashScope json_mode requires the word "json" to appear in messages.
+        effective_template = (
+            template
+            + "\n\nIMPORTANT: Return your answer as a valid json object only."
+        )
+
     prompt_template = ChatPromptTemplate.from_messages([
         SystemMessagePromptTemplate.from_template(system),
-        HumanMessagePromptTemplate.from_template(template=template)
+        HumanMessagePromptTemplate.from_template(template=effective_template)
     ])
 
     chain = prompt_template | llm

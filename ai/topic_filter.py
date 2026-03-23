@@ -40,7 +40,7 @@ Title: {title}
 Categories: {categories}
 Abstract: {summary}
 
-Return structured output only.
+Return structured output only in valid json format.
 """
 
 
