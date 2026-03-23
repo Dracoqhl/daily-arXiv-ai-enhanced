@@ -26,6 +26,7 @@ jobs:
       run: |
         source .venv/bin/activate
         today=$(date -u "+%Y-%m-%d")
+        mkdir -p data
         echo "开始爬取 $today 的arXiv论文... / Starting to crawl $today arXiv papers..."
         cache_hit=false
 
@@ -33,11 +34,16 @@ jobs:
         # Reuse today's raw crawl cache from data branch when available.
         if git ls-remote --heads origin data | grep -q data; then
           echo "🔍 检查 data 分支原始缓存... / Checking raw cache in data branch..."
-          git fetch --depth=1 origin data || true
-          if git show FETCH_HEAD:data/${today}_raw.jsonl > data/${today}.jsonl 2>/dev/null; then
+          git fetch --depth=1 origin data
+          if git cat-file -e refs/remotes/origin/data:data/${today}_raw.jsonl 2>/dev/null; then
+            git show refs/remotes/origin/data:data/${today}_raw.jsonl > data/${today}.jsonl
             echo "♻️ 命中当天原始缓存，跳过爬取 / Raw cache hit, skip crawling"
             cache_hit=true
+          else
+            echo "ℹ️ data 分支无当日 raw 缓存，将执行爬取 / No raw cache for today in data branch, will crawl"
           fi
+        else
+          echo "ℹ️ data 分支不存在，将执行首次爬取 / data branch not found, will crawl"
         fi
 
         if [ "$cache_hit" != "true" ]; then
@@ -78,7 +84,7 @@ jobs:
         echo "爬取完成 / Crawling completed"
 
     - name: Early push raw crawl cache to data branch
-      if: steps.crawl_step.outcome == 'success'
+      if: steps.crawl_step.outcome == 'success' && steps.crawl_step.outputs.raw_cache_hit != 'true'
       run: |
         today=${{ steps.crawl_step.outputs.crawl_date }}
         echo "提前推送当日原始缓存到 data 分支... / Early pushing raw cache to data branch..."
