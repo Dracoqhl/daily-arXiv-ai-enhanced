@@ -1,0 +1,1278 @@
+{
+  "input_file": "../data/2026-04-26.jsonl",
+  "output_file": "../data/2026-04-26_topic_filtered.jsonl",
+  "model": "glm-4.6v-flash",
+  "structured_output_method": "function_calling",
+  "total": 270,
+  "kept": 19,
+  "dropped": 251,
+  "errors": 197,
+  "decisions": {
+    "2604.21008": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.20983": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21011": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on a computer vision model for micro-action recognition, not on large models' decision making, reasoning, or post-training."
+    },
+    "2604.21032": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.20878": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.20862": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on the architecture of an AI-based system for military CoA planning, not on large-model decision making, reasoning, or post-training techniques."
+    },
+    "2604.21041": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.20996": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.20972": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21045": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21052": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.20987": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "The paper introduces COSPLAY, a co-evolution framework for LLM decision agents and skill bank agents to handle long-horizon tasks, focusing on decision making and skill retrieval."
+    },
+    "2604.21057": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.20995": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21066": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21060": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on medical image classification with contrastive fine-tuning, not on large-model decision making, reasoning, or post-training."
+    },
+    "2604.21003": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21070": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a DWT-based framework for document summarization, focusing on text processing and summarization techniques rather than LLM decision making, reasoning improvement, or post-training methods."
+    },
+    "2604.21079": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21076": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21006": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21102": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21018": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21104": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21082": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on a weighted loss function for data efficiency in medical report generation, which is about training optimization rather than decision making, reasoning improvement, or post-training techniques."
+    },
+    "2604.21108": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21119": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21027": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a hyperbolic model for EHR question answering, which is a specialized application and not focused on large-model decision making, reasoning improvement, or post-training."
+    },
+    "2604.21133": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21036": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21134": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21044": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21127": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a hyperspectral foundation model for Earth observation, not related to large-model decision making, reasoning improvement, or post-training."
+    },
+    "2604.21146": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21061": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21160": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21137": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on discourse analysis in science classrooms and uses LLMs for data augmentation, which is an application, not a study on large model reasoning, decision making, or post-training techniques."
+    },
+    "2604.21139": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21092": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21182": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21098": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21144": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on using visual history for dialogue common ground, not on reasoning or post-training of large models."
+    },
+    "2604.21190": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21148": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21198": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21103": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on AI governance and political turnover in public administration, not on large models' decision making, reasoning, or post-training."
+    },
+    "2604.21191": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21221": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21204": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper proposes a novel reasoning approach to enhance LLMs for occupation prediction by generating and using reasons, and fine-tuning LLMs with high-quality oracle reasons. It focuses on improving reasoning capability."
+    },
+    "2604.21155": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21227": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21211": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21154": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "decision_making",
+      "reason": "The paper proposes a multi-agent system for personalized physiotherapy, which is an application rather than focusing on large-model decision making or policy optimization as the main contribution."
+    },
+    "2604.21279": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21223": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21193": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on verification and attribution framework, not on decision making, reasoning improvement, or post-training techniques."
+    },
+    "2604.21209": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21229": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21232": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21289": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21280": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on on-device continual learning for visual representations using hyperdimensional computing, which is not about large models' decision making, reasoning, or post-training."
+    },
+    "2604.21238": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21290": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21253": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21263": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21291": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21256": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "Analyzes robustness and optimization of POMDP policies, which falls under decision making and planning."
+    },
+    "2604.21255": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21264": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21311": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21277": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21312": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on a remote sensing image super-resolution challenge, unrelated to large-model decision making, reasoning, or post-training."
+    },
+    "2604.21265": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on pre-training with music as substrate, not on decision making, reasoning improvement, or post-training."
+    },
+    "2604.21284": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Critical analysis of a memory system, not focused on decision making, reasoning improvement, or post-training."
+    },
+    "2604.21276": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21313": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21286": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper analyzes the relationship between cross-entropy and a K-way energy probe in predictive coding networks, focusing on theoretical assumptions and empirical tests. It does not address large-model decision making, reasoning improvement, or post-training."
+    },
+    "2604.21334": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21321": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21300": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21345": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21309": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21324": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "This paper focuses on unsupervised video-based visible-infrared person re-identification, a computer vision task, not on large model decision making, reasoning, or post-training."
+    },
+    "2604.21346": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21344": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21357": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21326": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21330": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21352": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21361": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21343": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "none",
+      "reason": "Improve visual alignment and multimodal reasoning in LMMs via latent denoising."
+    },
+    "2604.21370": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21414": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21349": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21375": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21420": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21356": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "This paper is about a computer vision method for ground filtering from point clouds, not related to large-model decision making, reasoning, or post-training."
+    },
+    "2604.21430": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21428": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on distributed pre-training system optimization, not on large-model decision making, reasoning, or post-training."
+    },
+    "2604.21360": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21454": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21444": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21469": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21362": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on a knowledge-driven approach for creative video generation, which is a generative model application, not directly related to large-model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2604.21446": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21387": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21481": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21480": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21396": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "Introduces a new dataset (VG-CoT) and benchmark to improve and evaluate visual reasoning in LVLMs."
+    },
+    "2604.21510": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces a new benchmark for optimization problem solving and proposes a method to improve LLMs' reasoning capabilities on these tasks. It focuses on evaluating and enhancing reasoning."
+    },
+    "2604.21400": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21496": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on media framing of human-elephant conflicts using computational analysis, not on LLMs' decision making, reasoning, or post-training."
+    },
+    "2604.21525": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21501": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21534": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21508": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21409": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces S1-VL, a scientific multimodal reasoning model with novel reasoning paradigms (Thinking-with-Images) and evaluates its reasoning capabilities on benchmarks. It focuses on improving reasoning ability in scientific domains."
+    },
+    "2604.21422": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21555": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on evaluating sentence embeddings for conceptual stability, not on large model reasoning or post-training. It's about embedding evaluation methodology."
+    },
+    "2604.21515": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21435": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21564": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21537": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21442": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a locality-sensitive hash function for point cloud indexing, which is a computer vision and data structure method, not related to large model decision making, reasoning, or post-training."
+    },
+    "2604.21549": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21450": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on image super-resolution using distillation of a pre-trained autoregressive model. It's about a specific technical improvement for a vision task, not about large-model decision making, reasoning improvement, or post-training alignment techniques. It's more of a method for a specific computer vision problem."
+    },
+    "2604.21593": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21554": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21453": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21590": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "none",
+      "reason": "The paper introduces AgenticQwen, a family of small agentic models trained via multi-round RL and dual data flywheels. It focuses on training methodology and model optimization, which falls under post-training."
+    },
+    "2604.21611": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21556": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21637": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21461": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces a benchmark and shows how to enhance multimodal pointing reasoning, which falls under improving reasoning capabilities."
+    },
+    "2604.21571": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21465": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21667": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on modeling annotator-specific rationales and generating explanations for NLI tasks. It's more about perspective modeling and explanation generation rather than large-model decision making, reasoning improvement, or post-training techniques. The main contribution is a specific framework for incorporating explanations, not a general approach to reasoning or post-training."
+    },
+    "2604.21478": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21584": {
+      "keep": true,
+      "confidence": 70,
+      "theme": "reasoning",
+      "reason": "The paper introduces CoFEE to control LLM reasoning for feature discovery, focusing on improving reasoning capabilities."
+    },
+    "2604.21632": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21698": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on topological data analysis for dyslexia detection, unrelated to large models or their decision making/reasoning."
+    },
+    "2604.21479": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21706": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21502": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21716": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21733": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21649": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper proposes a novel quantization method (GS-Quant) to enable LLMs to reason over knowledge graphs by generating structured, semantically coherent codes, improving reasoning capabilities."
+    },
+    "2604.21519": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21724": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21743": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "This paper focuses on efficient quantization-aware image enhancement for mobile devices, which is a computer vision task, not related to large-model decision making, reasoning, or post-training."
+    },
+    "2604.21523": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21725": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21764": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper proposes retrieving reusable reasoning skills to reduce token usage and improve accuracy, which directly improves reasoning capability."
+    },
+    "2604.21530": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on a medical image analysis task using foundation models, not on large-model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2604.21769": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21546": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21751": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on cultural and regional biases in LLMs, which is not related to the core themes of decision making, reasoning improvement, or post-training."
+    },
+    "2604.21793": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21748": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21766": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21572": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on video action segmentation using deep kernel methods, unrelated to large-model decision making, reasoning, or post-training."
+    },
+    "2604.21573": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21767": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21794": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21816": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21575": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21782": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper describes a shared task on narrative story similarity and dataset creation, not focusing on LLM decision making, reasoning improvement, or post-training."
+    },
+    "2604.21827": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21592": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21871": {
+      "keep": true,
+      "confidence": 50,
+      "theme": "decision_making",
+      "reason": "The paper evaluates LLM decision-making in moral dilemmas, analyzing its alignment with moral norms versus predicted human behavior."
+    },
+    "2604.21854": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21617": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21882": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on analyzing factual memorization and dataset construction, not on decision making, reasoning improvement, or post-training techniques."
+    },
+    "2604.21896": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21627": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21910": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21631": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21885": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.18779": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21654": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21889": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21668": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21890": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a dataset for event extraction and uses it for benchmarking LLMs, which is not directly about LLM decision making, reasoning improvement, or post-training methods."
+    },
+    "2604.21681": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21901": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21897": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on computational analysis of political discourse and legislative behavior, not on large-model decision making, reasoning, or post-training."
+    },
+    "2604.21916": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces a new benchmark (MathDuels) to evaluate LLMs as both problem posers and solvers, revealing decoupled authoring and solving capabilities. It's primarily about evaluating reasoning abilities."
+    },
+    "2604.21686": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21694": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21928": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper evaluates using LLMs for ASR evaluation, not about LLMs' decision making, reasoning, or post-training."
+    },
+    "2604.21712": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21713": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21718": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21728": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21760": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21772": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on Test-Time Adaptation (TTA) for open-set continual adaptation, which is about domain adaptation and robustness, not directly related to large-model decision making, reasoning, or post-training."
+    },
+    "2604.21776": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Paper is about video reshooting and self-supervised learning, not related to LLM decision making, reasoning, or post-training."
+    },
+    "2604.21786": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21801": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21806": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21810": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21814": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21873": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21879": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21904": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21909": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21911": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21915": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2604.21921": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21926": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}"
+    },
+    "2604.21931": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on video processing and temporal control, which is not directly related to large-model decision making, reasoning improvement, or post-training techniques. It's about learning time flow in videos and generating controllable video content."
+    }
+  }
+}
