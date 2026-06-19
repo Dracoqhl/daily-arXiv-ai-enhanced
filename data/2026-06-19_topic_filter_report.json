@@ -1,0 +1,1392 @@
+{
+  "input_file": "../data/2026-06-19.jsonl",
+  "output_file": "../data/2026-06-19_topic_filtered.jsonl",
+  "model": "glm-4.6v-flash",
+  "structured_output_method": "function_calling",
+  "total": 291,
+  "kept": 30,
+  "dropped": 261,
+  "errors": 201,
+  "decisions": {
+    "2606.19345": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19346": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper studies cross-lingual transfer in LLMs but focuses on transfer mechanisms rather than improving reasoning or post-training aspects. Main contribution is about transfer evaluation, not core themes."
+    },
+    "2606.19347": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19344": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19460": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on scaling a generative model for chest radiograph synthesis, not on decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19464": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19348": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19469": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19349": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19483": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on a new distillation curriculum for vision transformers, improving efficiency and accuracy. It does not directly address large-model decision making, reasoning improvement, or post-training techniques like SFT/RLHF."
+    },
+    "2606.19495": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19475": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19531": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19494": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19350": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "Pruning method to preserve reasoning performance by identifying critical attention heads via causal attribution. Evaluated on reasoning benchmarks. Focus is on improving reasoning capability via efficiency optimization."
+    },
+    "2606.19351": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19534": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a new multimodal diffusion language model for parallel region perception, focusing on efficiency and architecture, not on reasoning or decision making."
+    },
+    "2606.19501": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19352": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19565": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19509": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "none",
+      "reason": "The paper proposes a post-training method to improve LLM calibration on structured data by using cross-model attribution divergence, addressing epistemic uncertainty without retraining."
+    },
+    "2606.19522": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Paper focuses on vision-language modeling for Alzheimer's disease risk prediction, not on large-model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19353": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19584": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19617": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19527": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19354": {
+      "keep": true,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Paper focuses on optimizing verification granularity during test-time scaling to improve reasoning performance. It provides a theoretical framework and adaptive strategy. Mainly about reasoning improvement and computational efficiency."
+    },
+    "2606.19356": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19662": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19538": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a unified architecture (ITNet) that subsumes convolution, attention, and recurrence as special cases. It's about model design and representation learning, not directly about decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19676": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on video editing with diffusion models, not on large models' decision making, reasoning, or post-training."
+    },
+    "2606.19468": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on analyzing narrative content in pretraining data, not on model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19544": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19559": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "Proposes uncertainty decomposition for proactive clarification seeking, a decision-making capability in LLM agents. Improves clarification F1 significantly on benchmarks. Focuses on planning and policy optimization for interactive agents."
+    },
+    "2606.19682": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19552": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19684": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19602": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19591": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19588": {
+      "keep": true,
+      "confidence": 50,
+      "theme": "reasoning",
+      "reason": "The paper analyzes the \"narration gap\" in LLM-solver loops, evaluating robustness and security vulnerabilities, which falls under reasoning evaluation."
+    },
+    "2606.19706": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a new dataset (NEST) for long video understanding, focusing on narrative event structures. It is a benchmark creation, not about model improvement or decision making."
+    },
+    "2606.19607": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19625": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "none",
+      "reason": "Analyzes where social reasoning capabilities come from in LLMs by tracing to training data regions. Focuses on capability provenance and evaluation of reasoning vs knowledge."
+    },
+    "2606.19718": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19626": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19637": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on dataset construction and labeling in clinical NLP, not on large-model decision making, reasoning, or post-training."
+    },
+    "2606.19733": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19630": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19638": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a specialized model (MiqraBERT) for Biblical Hebrew parallel detection, focusing on finetuning and evaluation for a specific application, not on large-model decision making, reasoning improvement, or post-training techniques as core themes."
+    },
+    "2606.19736": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19651": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19640": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19776": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19658": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19647": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Computational discourse analysis of multilingual text, not about large model decision making, reasoning, or post-training."
+    },
+    "2606.19804": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19683": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on a theoretical model of coalition formation and equilibrium analysis in game theory, not on large models or their decision-making/planning."
+    },
+    "2606.19659": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19805": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19704": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on evaluation methodology and benchmark design, not on decision making, reasoning improvement, or post-training."
+    },
+    "2606.19667": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19817": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19668": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19824": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a new backbone for medical image segmentation, focusing on architecture design and performance improvement for thin structures. It does not relate to large-model decision making, reasoning, or post-training."
+    },
+    "2606.19735": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19741": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19828": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces 3D-PLOT-LLM to enable part-level reasoning in 3D MLLMs by reorganizing input tokens and adding marker refinement. It improves part grounding and evaluation on benchmarks, focusing on enhancing reasoning capability."
+    },
+    "2606.19747": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19700": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19698": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Uses GPT as a tool for customer support analysis; not about LLM decision making, reasoning improvement, or post-training."
+    },
+    "2606.19835": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19749": {
+      "keep": true,
+      "confidence": 70,
+      "theme": "reasoning",
+      "reason": "The paper benchmarks agentic review systems using LLMs, evaluating their performance on tracking paper quality and detecting errors, which falls under evaluating reasoning capabilities of LLMs."
+    },
+    "2606.19710": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19753": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on foundational frameworks for deterministic encapsulation of generative models in traditional systems, which is about system integration and safety, not large-model decision making, reasoning, or post-training."
+    },
+    "2606.19838": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19727": {
+      "keep": true,
+      "confidence": 50,
+      "theme": "reasoning",
+      "reason": "This paper introduces a new benchmark dataset (NRITYAM) for evaluating cultural comprehension capabilities of language models in the context of global dance traditions, which is an evaluation of reasoning capabilities."
+    },
+    "2606.19849": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "Proposes a coordinated inference framework to accelerate streaming VideoLLMs, focusing on throughput and latency."
+    },
+    "2606.19759": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19744": {
+      "keep": true,
+      "confidence": 90,
+      "theme": "none",
+      "reason": "Focuses on sequential DPO for preference alignment, which is a post-training method (theme 3)."
+    },
+    "2606.19867": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19771": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19815": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19882": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on interpretability and concept bottleneck models in multimodal learning, not on decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19782": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "The paper presents a multi-agent pipeline for financial chart QA with planning, verification, and auditability, which fits the decision making/planning theme."
+    },
+    "2606.19819": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on claim decomposition metric and convergence analysis, not on large-model decision making, reasoning improvement, or post-training."
+    },
+    "2606.19787": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19889": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on surgical world modeling and dynamics, not on large model decision making, reasoning improvement, or post-training."
+    },
+    "2606.19831": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19901": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "This paper proposes a new network architecture for image super-resolution, which is a computer vision task. It does not relate to large-model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19847": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19908": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19808": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "The paper proposes a serving-layer controller (\\sevra) to decide when to invoke active verification for a frozen solver, optimizing reasoning budget and improving accuracy while reducing tokens. This is a clear example of large-model decision making for reasoning allocation."
+    },
+    "2606.19788": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces a benchmark (CombEval) to evaluate combinatorial counting in LLMs, focusing on diagnostic evaluation of reasoning capabilities. It's a tool for reasoning evaluation."
+    },
+    "2606.19852": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19915": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19857": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19812": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "The paper proposes a verification architecture for LLM agents in legal discovery, focusing on planning, reasoning, and uncertainty quantification to prevent failure propagation, which is about decision making and policy optimization."
+    },
+    "2606.19927": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19821": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19932": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19868": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19864": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on the societal and democratic implications of LLMs in deliberation, not on large-model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19881": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19934": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19910": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19938": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a new constraint for optical flow learning, which is a computer vision task, not related to large-model decision making, reasoning, or post-training."
+    },
+    "2606.19893": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "Proposes MetaResearcher, a framework for training research agents with self-reflective RL and GRPO, focusing on decision making and policy optimization."
+    },
+    "2606.19911": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "Proposes a framework for population-level storage and retrieval of agent-generated trajectories to improve decision making and reduce interaction steps."
+    },
+    "2606.19946": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19939": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a model for generating handwritten mathematical expressions, which is a computer vision task and not related to large-model decision making, reasoning improvement, or post-training."
+    },
+    "2606.19921": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20072": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19944": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces Timage, a generative text-in-image paradigm to improve spatial reasoning in vision-language models, which is a core theme of reasoning improvement."
+    },
+    "2606.20089": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19924": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on philosophical concepts of agency and autotelic AI, which is not directly about large-model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.19935": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20093": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19958": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19948": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20097": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19950": {
+      "keep": true,
+      "confidence": 50,
+      "theme": "reasoning",
+      "reason": "The paper focuses on improving confidence calibration of MLLMs for medical VQA, which is related to evaluating and improving model reasoning capabilities. It proposes a novel method and shows empirical results. It's not about standard post-training techniques like SFT or RLHF. The main contribution is about improving model reliability, which falls under reasoning improvement."
+    },
+    "2606.19961": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19980": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19965": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19990": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20152": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on interpretability and representation analysis of essay quality in LLMs, not on decision making, reasoning improvement, or post-training methods."
+    },
+    "2606.19966": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20058": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20113": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper analyzes streaming RAG and tool-intent stabilization but focuses on system-level analysis and bounds rather than model decision making, reasoning improvement, or post-training techniques. It's more about system optimization and query processing conditions."
+    },
+    "2606.20164": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20068": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20179": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19985": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20084": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.19970": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a new flow-based generative model (CrossFlow) for image generation, focusing on architecture and training objectives, which is not directly about large-model decision making, reasoning, or post-training."
+    },
+    "2606.20198": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20087": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "The paper proposes an RL-based approach (SAC with attention) for process parameter optimization in additive manufacturing, which falls under decision making and policy optimization."
+    },
+    "2606.20027": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper proposes a new transformer aggregator for Multiple Instance Learning in medical imaging, focusing on attention stabilization. It's about model architecture improvement for a specific application, not about large-model decision making, reasoning, or post-training."
+    },
+    "2606.20032": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20212": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a dataset for format-preserving machine translation, not focusing on large-model decision making, reasoning, or post-training."
+    },
+    "2606.20122": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20225": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20035": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "This paper proposes a new neural network architecture (PU-UNet) for medical image segmentation focusing on stable multiplicative feature modeling. It's a computer vision method, not related to large model decision making, reasoning, or post-training."
+    },
+    "2606.20138": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20255": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20044": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Paper focuses on multi-modal ReID in frequency domain, not related to large model decision making, reasoning, or post-training."
+    },
+    "2606.20142": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20287": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20045": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20146": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20369": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20076": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20156": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20482": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20077": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on the internal evolution of visual representations in VLMs and architectural integration, not on decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.20162": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20487": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20083": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on controllable video world model and weather transfer, not on large-model decision making, reasoning improvement, or post-training."
+    },
+    "2606.20205": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper discusses measurement artifacts in psychological profiling of LLMs, not about improving reasoning or decision-making."
+    },
+    "2606.20527": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20092": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "decision_making",
+      "reason": "The paper introduces EventVLA, a memory-augmented VLA policy for long-horizon robotic manipulation, focusing on decision-making and planning by using event-driven visual evidence memory."
+    },
+    "2606.20094": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20210": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20208": {
+      "keep": true,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Introduces a new metric (RVS) for evaluating logical compliance of predictive models, which is a form of reasoning evaluation."
+    },
+    "2606.20095": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20227": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20100": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20231": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20103": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20236": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20245": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20108": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on image quality assessment for fundus images using anatomical priors, which is not related to large-model decision making, reasoning, or post-training."
+    },
+    "2606.20110": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20264": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20112": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20274": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20130": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20323": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20131": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20333": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20140": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20363": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20143": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Medical imaging benchmark for tumor segmentation and prognosis, not related to large model decision making, reasoning, or post-training."
+    },
+    "2606.20381": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20155": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20438": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20459": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20161": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "This paper focuses on video polyp segmentation, not on large-model decision making, reasoning, or post-training. It uses an agent as a tool for mask evolution but the core contribution is a specialized segmentation framework."
+    },
+    "2606.20177": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20508": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20189": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on LiDAR pretraining for autonomous driving, not on large models' decision making, reasoning, or post-training."
+    },
+    "2606.20517": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20477": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20196": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20518": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20529": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20199": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20526": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20223": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "This paper focuses on developing and evaluating a computer vision model (DeepForestVisionV2) for camera-trap monitoring in African tropical forests, which is not related to large-model decision making, reasoning improvement, or post-training techniques."
+    },
+    "2606.20532": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20233": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on video generation and compositing for integrating characters into environments, which is a computer vision application, not related to large-model decision making, reasoning, or post-training."
+    },
+    "2606.20241": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20544": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20244": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20250": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Paper focuses on weakly supervised histopathology segmentation, not large models or their decision making/reasoning."
+    },
+    "2606.20282": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20300": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20302": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20303": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20310": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20390": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20312": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "none",
+      "reason": "Post-hoc calibration method for a frozen pose-flow model, improving anomaly detection performance."
+    },
+    "2606.20404": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20419": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20449": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20455": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20488": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20506": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper focuses on image generation and style-content control, which is outside the scope of the specified themes."
+    },
+    "2606.20521": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20523": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a new SAR dataset, which is a resource contribution, not directly related to large-model decision making, reasoning improvement, or post-training methods."
+    },
+    "2606.20515": {
+      "keep": true,
+      "confidence": 80,
+      "theme": "reasoning",
+      "reason": "The paper introduces S-Agent to improve spatial reasoning by treating VLM as a semantic planner for evidence accumulation."
+    },
+    "2606.20531": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20536": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20542": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20543": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20556": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20545": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "The paper introduces a benchmark for world models and finds they lack a persistent state. It's about world model evaluation and design, not directly about reasoning improvement, post-training, or decision making."
+    },
+    "2606.20559": {
+      "keep": false,
+      "confidence": 50,
+      "theme": "none",
+      "reason": "Focuses on egocentric video representation learning via multi-teacher distillation, not on large-model decision making, reasoning, or post-training."
+    },
+    "2606.20561": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    },
+    "2606.20563": {
+      "keep": false,
+      "confidence": 0,
+      "theme": "none",
+      "reason": "classification_error: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}"
+    }
+  }
+}
